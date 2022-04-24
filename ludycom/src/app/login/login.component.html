@@ -1,0 +1,139 @@
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="col-md-6 d-none d-md-flex bg-image"></div>
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10 col-xl-7 mx-auto">
+                            <div *ngIf="!register">
+                                <h3 class="display-4">Login</h3>
+                                <form class="w-75" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+                                    <div class="form-group mb-3 ">
+                                        <input id="inputEmail" type="email" formControlName="email"
+                                            [ngClass]="{ 'is-invalid': logSubmitted && log.email.errors }"
+                                            placeholder="Email address" required="" autofocus=""
+                                            class="form-control rounded-pill border-0 shadow-sm px-4">
+                                        <div *ngIf="logSubmitted && log.email.errors" class="invalid-feedback">
+                                            <div *ngIf="log.email.errors.required">Email is required</div>
+                                            <div *ngIf="log.email.errors.email">Email must be a valid email address
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <input id="inputPassword" type="password" formControlName="password"
+                                            [ngClass]="{ 'is-invalid': logSubmitted && log.password.errors }"
+                                            placeholder="Password" required=""
+                                            class="form-control rounded-pill border-0 shadow-sm px-4 text-primary">
+                                        <div *ngIf="logSubmitted && log.password.errors" class="invalid-feedback">
+                                            <div *ngIf="log.password.errors.required">Password is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit"
+                                            class="w-75 btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm ">
+                                            ingresar
+                                        </button>
+                                    </div>
+                                </form>
+                                <div>
+                                    <span (click)="formRegister()">no tengo cuenta</span>
+                                </div>
+                            </div>
+                            <div *ngIf="register">
+                                <h3 class="display-4">register</h3>
+                                <form class="w-100" [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()">
+                                    <div class="form-group mb-3 d-flex">
+                                        <div class="col-6 px-2">
+                                            <input id="inputName" type="text" formControlName="name"
+                                                [ngClass]="{ 'is-invalid': regSubmitted && reg.name.errors }"
+                                                placeholder="Nombre" required="" autofocus=""
+                                                class="form-control rounded-pill border-0 shadow-sm px-4">
+                                            <div *ngIf="regSubmitted && reg.name.errors" class="invalid-feedback">
+                                                <div *ngIf="reg.name.errors.required">name is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 px-2">
+                                            <input id="inputSurname" type="text" formControlName="surname"
+                                                [ngClass]="{ 'is-invalid': regSubmitted && reg.surname.errors }"
+                                                placeholder="Apellidos" required="" autofocus=""
+                                                class="form-control rounded-pill border-0 shadow-sm px-4">
+                                            <div *ngIf="regSubmitted && reg.surname.errors" class="invalid-feedback">
+                                                <div *ngIf="reg.surname.errors.required">surname is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3 d-flex">
+                                        <div class="col-6 px-2">
+                                            <input id="inputDate" type="date" formControlName="datebirth"
+                                                [ngClass]="{ 'is-invalid': regSubmitted && reg.datebirth.errors }"
+                                                placeholder="Nombres" required="" autofocus=""
+                                                class="form-control rounded-pill border-0 shadow-sm px-4">
+                                            <div *ngIf="regSubmitted && reg.datebirth.errors" class="invalid-feedback">
+                                                <div *ngIf="reg.datebirth.errors.required">datebirth is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 px-2">
+                                            <input id="inputEmail" type="email" formControlName="emailregister"
+                                                [ngClass]="{ 'is-invalid': regSubmitted && reg.emailregister.errors }"
+                                                placeholder="Email address" required="" autofocus=""
+                                                class="form-control rounded-pill border-0 shadow-sm px-4">
+                                            <div *ngIf="regSubmitted && reg.emailregister.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="reg.emailregister.errors.required">Email is required</div>
+                                                <div *ngIf="reg.emailregister.errors.email">Email must be a valid email
+                                                    address
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3 d-flex">
+                                        <div class="col-6 px-2">
+                                            <input id="docNumber" type="text" formControlName="docnumber"
+                                                [ngClass]="{ 'is-invalid': regSubmitted && reg.docnumber.errors }"
+                                                placeholder="Numero de documento" required="" autofocus=""
+                                                class="form-control rounded-pill border-0 shadow-sm px-4">
+                                            <div *ngIf="regSubmitted && reg.docnumber.errors" class="invalid-feedback">
+                                                <div *ngIf="reg.docnumber.errors.required">docnumber is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 px-2">
+                                            <input id="inputArea" type="email" formControlName="area"
+                                                [ngClass]="{ 'is-invalid': regSubmitted && reg.area.errors }"
+                                                placeholder="Area" required="" autofocus=""
+                                                class="form-control rounded-pill border-0 shadow-sm px-4">
+                                            <div *ngIf="regSubmitted && reg.area.errors" class="invalid-feedback">
+                                                <div *ngIf="reg.area.errors.required">area is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3 d-flex">
+                                        <div class="col-6 px-2">
+                                            <input id="inputName" type="password" formControlName="pass"
+                                                [ngClass]="{ 'is-invalid': regSubmitted && reg.pass.errors }"
+                                                placeholder="Contraseña" required="" autofocus=""
+                                                class="form-control rounded-pill border-0 shadow-sm px-4">
+                                            <div *ngIf="regSubmitted && reg.pass.errors" class="invalid-feedback">
+                                                <div *ngIf="reg.pass.errors.required">name is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit"
+                                            class="w-75 btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm ">
+                                            Registrar
+                                        </button>
+                                    </div>
+                                </form>
+                                <div>
+                                    <span (click)="formRegister()">ya tengo cuenta</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
